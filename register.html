@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="register.title">Register team · Squash Junkies</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <main class="centered-page">
+    <div class="card" style="max-width:480px;width:100%">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <a href="index.html" class="back-link" data-i18n="common.back">← Back</a>
+        <div class="lang-switch">
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="de">DE</button>
+        </div>
+      </div>
+      <h1 style="font-size:24px;margin-top:12px;margin-bottom:4px" data-i18n="register.heading">Register team</h1>
+      <p class="text-muted" style="margin-bottom:20px" data-i18n="register.desc">
+        After submitting you'll get an access code that the captain can use to manage the roster.
+      </p>
+
+      <form id="registerForm">
+        <label data-i18n="register.teamName">Team name</label>
+        <input id="name" required />
+
+        <label data-i18n="register.captainName">Captain's name</label>
+        <input id="captainName" required />
+
+        <label data-i18n="register.captainEmail">Captain's email</label>
+        <input id="captainEmail" type="email" required />
+
+        <label data-i18n="register.captainPhone">Captain's mobile number</label>
+        <input id="captainPhone" required />
+
+        <p class="text-error" id="error" style="display:none;margin-top:14px"></p>
+
+        <button type="submit" class="btn btn-primary btn-block" style="margin-top:20px" id="submitBtn" data-i18n="register.submit">
+          Create team
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="assets/supabase-client.js"></script>
+  <script src="assets/i18n.js"></script>
+  <script src="assets/register.js"></script>
+</body>
+</html>

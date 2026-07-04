@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Squash Junkies</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <div class="wrap top-bar">
+    <div class="lang-switch">
+      <button class="lang-btn" data-lang="en">EN</button>
+      <button class="lang-btn" data-lang="de">DE</button>
+    </div>
+  </div>
+
+  <main class="wrap hero">
+    <p class="eyebrow" data-i18n="home.eyebrow">TEAM SQUASH TOURNAMENT</p>
+    <h1 id="tournamentName">Squash Junkies</h1>
+    <p class="sub" data-i18n="home.subtitle">4 men, 2 women, one team. Register your squad and compete for the title.</p>
+
+    <div class="grid grid-3" style="margin-top:40px">
+      <div class="card">
+        <div class="stat-label" data-i18n="home.stat.date">Date</div>
+        <div class="stat-value" id="eventDates">–</div>
+      </div>
+      <div class="card">
+        <div class="stat-label" data-i18n="home.stat.fee">Entry fee</div>
+        <div class="stat-value" id="prices">–</div>
+      </div>
+      <div class="card">
+        <div class="stat-label" data-i18n="home.stat.teams">Teams</div>
+        <div class="stat-value" id="teamCount">–</div>
+      </div>
+    </div>
+
+    <div class="grid grid-2" style="margin-top:32px">
+      <div class="card">
+        <h2 style="font-size:20px;margin-bottom:8px" data-i18n="home.register.title">Register a new team</h2>
+        <p class="text-muted" id="registrationInfo">Loading…</p>
+        <a href="register.html" id="registerLink" class="btn btn-primary" style="display:none" data-i18n="home.register.button">Register team</a>
+        <button class="btn btn-secondary" id="registerClosedBtn" style="display:none" disabled data-i18n="home.register.closedButton">Registration closed</button>
+      </div>
+
+      <div class="card">
+        <h2 style="font-size:20px;margin-bottom:8px" data-i18n="home.login.title">Log in as captain</h2>
+        <p class="text-muted" data-i18n="home.login.desc">Enter the access code you received during registration.</p>
+        <form id="codeForm" class="row-inline" style="margin-top:12px">
+          <input id="codeInput" data-i18n-placeholder="home.login.placeholder" placeholder="e.g. K7M2PQXT" style="text-transform:uppercase;letter-spacing:0.1em" />
+          <button type="submit" class="btn btn-primary" data-i18n="home.login.button">Go</button>
+        </form>
+      </div>
+    </div>
+
+    <p style="margin-top:48px">
+      <a href="admin/login.html" class="back-link" data-i18n="home.adminLink">Admin login →</a>
+    </p>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="assets/supabase-client.js"></script>
+  <script src="assets/i18n.js"></script>
+  <script src="assets/index.js"></script>
+</body>
+</html>
