@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="teamEdit.heading">Edit team · Squash Junkies Admin</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <nav class="admin-nav">
+    <div class="wrap">
+      <span style="font-family:'Archivo Black',sans-serif">Squash Junkies · Admin</span>
+      <div class="links">
+        <a href="dashboard.html" data-i18n="nav.dashboard">Dashboard</a>
+        <a href="settings.html" data-i18n="nav.settings">Settings</a>
+        <a href="reports.html" data-i18n="nav.reports">Reports</a>
+        <a href="#" id="logoutBtn" class="back-link" data-i18n="nav.logout">Logout</a>
+        <div class="lang-switch">
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="de">DE</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap" style="max-width:760px">
+    <a href="dashboard.html" class="back-link" data-i18n="teamEdit.backToDashboard">← Back to dashboard</a>
+
+    <div id="loadingMsg" class="text-muted" style="margin-top:24px" data-i18n="teamEdit.loading">Loading team…</div>
+    <div id="notFoundMsg" class="text-muted" style="margin-top:24px;display:none" data-i18n="teamEdit.notFound">
+      Team not found.
+    </div>
+
+    <div id="content" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:24px;margin-bottom:8px">
+        <h1 style="font-size:24px" data-i18n="teamEdit.heading">Edit team</h1>
+        <span class="text-muted" style="font-size:13px">
+          <span data-i18n="teamEdit.code">Code:</span> <span class="text-ball" id="codeLabel"></span>
+        </span>
+      </div>
+      <p class="text-muted" style="margin-bottom:24px" data-i18n="teamEdit.adminNote">
+        As admin, saving ignores the captains' edit deadline.
+      </p>
+
+      <div class="card" style="margin-bottom:24px">
+        <label data-i18n="team.teamName">Team name</label>
+        <input id="teamName" />
+
+        <div class="grid grid-3" style="margin-top:14px">
+          <div>
+            <label data-i18n="teamEdit.captainName">Captain</label>
+            <input id="captainName" />
+          </div>
+          <div>
+            <label data-i18n="teamEdit.captainEmail">Captain email</label>
+            <input id="captainEmail" type="email" />
+          </div>
+          <div>
+            <label data-i18n="teamEdit.captainPhone">Captain mobile</label>
+            <input id="captainPhone" />
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-3" style="margin-bottom:24px">
+        <div class="card">
+          <div class="stat-label" data-i18n="team.stat.men">Men</div>
+          <div class="stat-value" id="statMen">0 (min. 4)</div>
+        </div>
+        <div class="card">
+          <div class="stat-label" data-i18n="team.stat.women">Women</div>
+          <div class="stat-value" id="statWomen">0 (min. 2)</div>
+        </div>
+        <div class="card">
+          <div class="stat-label" data-i18n="team.stat.price">Total entry fee</div>
+          <div class="stat-value" id="statPrice">0.00 €</div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom:24px">
+        <h2 style="font-size:18px;margin-bottom:16px" data-i18n="team.men.heading">Men</h2>
+        <div id="groupMen"></div>
+        <button class="btn btn-secondary" style="margin-top:12px;font-size:14px" id="addManBtn" data-i18n="team.addMan">+ Add man</button>
+      </div>
+
+      <div class="card" style="margin-bottom:24px">
+        <h2 style="font-size:18px;margin-bottom:16px" data-i18n="team.women.heading">Women</h2>
+        <div id="groupWomen"></div>
+        <button class="btn btn-secondary" style="margin-top:12px;font-size:14px" id="addWomanBtn" data-i18n="team.addWoman">+ Add woman</button>
+      </div>
+
+      <div class="card" style="margin-bottom:24px">
+        <h2 style="font-size:18px;margin-bottom:16px" data-i18n="team.supporters.heading">Supporters</h2>
+        <div id="groupSupporters"></div>
+        <button class="btn btn-secondary" style="margin-top:12px;font-size:14px" id="addSupporterBtn" data-i18n="team.addSupporter">+ Add supporter</button>
+      </div>
+
+      <p class="text-error" id="error" style="display:none;white-space:pre-line"></p>
+
+      <button class="btn btn-primary btn-block" id="saveBtn" data-i18n="common.save">Save</button>
+    </div>
+  </main>
+
+  <template id="playerRowTemplate">
+    <div class="player-row">
+      <div class="position-badge-wrap">
+        <span class="position-badge"></span>
+      </div>
+      <div>
+        <label data-i18n="team.field.firstName">First name</label>
+        <input data-field="firstName" />
+      </div>
+      <div>
+        <label data-i18n="team.field.lastName">Last name</label>
+        <input data-field="lastName" />
+      </div>
+      <div>
+        <label data-i18n="team.field.email">Email</label>
+        <input data-field="email" type="email" />
+      </div>
+      <div>
+        <label data-i18n="team.field.mobile">Mobile</label>
+        <input data-field="mobile" />
+      </div>
+      <div>
+        <label data-i18n="team.field.shirt">Shirt</label>
+        <select data-field="shirtSize"></select>
+      </div>
+      <button class="remove-btn" data-i18n-title="team.remove" title="Remove">✕</button>
+    </div>
+  </template>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="../assets/supabase-client.js"></script>
+  <script src="../assets/i18n.js"></script>
+  <script src="../assets/admin-common.js"></script>
+  <script src="../assets/roster-editor.js"></script>
+  <script src="../assets/admin-team-edit.js"></script>
+</body>
+</html>

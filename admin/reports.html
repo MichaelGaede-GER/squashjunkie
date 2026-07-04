@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="nav.reports">Reports · Squash Junkies Admin</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <nav class="admin-nav">
+    <div class="wrap">
+      <span style="font-family:'Archivo Black',sans-serif">Squash Junkies · Admin</span>
+      <div class="links">
+        <a href="dashboard.html" data-i18n="nav.dashboard">Dashboard</a>
+        <a href="settings.html" data-i18n="nav.settings">Settings</a>
+        <a href="reports.html" data-i18n="nav.reports">Reports</a>
+        <a href="#" id="logoutBtn" class="back-link" data-i18n="nav.logout">Logout</a>
+        <div class="lang-switch">
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="de">DE</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap" style="max-width:640px">
+    <h1 style="font-size:24px;margin-bottom:24px" data-i18n="reports.heading">Reports</h1>
+
+    <div class="grid grid-2">
+      <button class="card report-link" id="teamsPdfBtn" style="text-align:left;cursor:pointer">
+        <h2 style="font-size:18px;margin-bottom:8px" data-i18n="reports.teamsPdf.title">Team list (PDF)</h2>
+        <p class="text-muted" data-i18n="reports.teamsPdf.desc">All teams with players, contact details, role and shirt size.</p>
+      </button>
+
+      <button class="card report-link" id="shirtsPdfBtn" style="text-align:left;cursor:pointer">
+        <h2 style="font-size:18px;margin-bottom:8px" data-i18n="reports.shirtsPdf.title">Shirt order (PDF)</h2>
+        <p class="text-muted" data-i18n="reports.shirtsPdf.desc">Overall shirt size totals plus a breakdown per team.</p>
+      </button>
+    </div>
+
+    <p class="text-muted" id="status" style="margin-top:16px"></p>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="../assets/supabase-client.js"></script>
+  <script src="../assets/i18n.js"></script>
+  <script src="../assets/admin-common.js"></script>
+  <script src="../assets/admin-reports.js"></script>
+</body>
+</html>

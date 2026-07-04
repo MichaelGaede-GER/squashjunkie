@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="adminLogin.title">Admin login · Squash Junkies</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <main class="centered-page">
+    <form class="card" id="loginForm" style="max-width:360px;width:100%">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+        <h1 style="font-size:24px" data-i18n="adminLogin.title">Admin login</h1>
+        <div class="lang-switch">
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+          <button type="button" class="lang-btn" data-lang="de">DE</button>
+        </div>
+      </div>
+      <label data-i18n="adminLogin.email">Email</label>
+      <input id="email" type="email" required autofocus />
+      <label data-i18n="adminLogin.password">Password</label>
+      <input id="password" type="password" required />
+      <p class="text-error" id="error" style="display:none;margin-top:14px"></p>
+      <button type="submit" class="btn btn-primary btn-block" style="margin-top:20px" id="submitBtn" data-i18n="adminLogin.button">
+        Log in
+      </button>
+    </form>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="../assets/supabase-client.js"></script>
+  <script src="../assets/i18n.js"></script>
+  <script src="../assets/admin-login.js"></script>
+</body>
+</html>

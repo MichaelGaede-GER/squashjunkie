@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="nav.settings">Settings · Squash Junkies Admin</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <nav class="admin-nav">
+    <div class="wrap">
+      <span style="font-family:'Archivo Black',sans-serif">Squash Junkies · Admin</span>
+      <div class="links">
+        <a href="dashboard.html" data-i18n="nav.dashboard">Dashboard</a>
+        <a href="settings.html" data-i18n="nav.settings">Settings</a>
+        <a href="reports.html" data-i18n="nav.reports">Reports</a>
+        <a href="#" id="logoutBtn" class="back-link" data-i18n="nav.logout">Logout</a>
+        <div class="lang-switch">
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="de">DE</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap" style="max-width:640px">
+    <h1 style="font-size:24px;margin-bottom:24px" data-i18n="settings.heading">Settings</h1>
+
+    <div class="card" id="form">
+      <label data-i18n="settings.tournamentName">Tournament name</label>
+      <input id="tournamentName" />
+
+      <div class="grid grid-3" style="margin-top:14px">
+        <div>
+          <label data-i18n="settings.maxTeams">Number of teams (max.)</label>
+          <input id="maxTeams" type="number" min="1" />
+        </div>
+        <div>
+          <label data-i18n="settings.pricePlayer">Entry fee / player (€)</label>
+          <input id="pricePlayer" type="number" min="0" step="0.01" />
+        </div>
+        <div>
+          <label data-i18n="settings.priceSupporter">Entry fee / supporter (€)</label>
+          <input id="priceSupporter" type="number" min="0" step="0.01" />
+        </div>
+      </div>
+
+      <label data-i18n="settings.shirtSizes">Available shirt sizes (comma-separated)</label>
+      <input id="shirtSizes" placeholder="XS,S,M,L,XL,XXL" />
+
+      <div class="grid grid-2" style="margin-top:14px">
+        <div>
+          <label data-i18n="settings.eventStart">Event start</label>
+          <input id="eventStartDate" type="date" />
+        </div>
+        <div>
+          <label data-i18n="settings.eventEnd">Event end</label>
+          <input id="eventEndDate" type="date" />
+        </div>
+      </div>
+
+      <div class="grid grid-2" style="margin-top:14px">
+        <div>
+          <label data-i18n="settings.registrationDeadline">Registration open until</label>
+          <input id="registrationDeadline" type="date" />
+        </div>
+        <div>
+          <label data-i18n="settings.editDeadline">Captains can edit teams until</label>
+          <input id="editDeadline" type="date" />
+        </div>
+      </div>
+
+      <p class="text-error" id="error" style="display:none;margin-top:14px"></p>
+
+      <button class="btn btn-primary" style="margin-top:20px" id="saveBtn" data-i18n="common.save">Save</button>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="../assets/supabase-client.js"></script>
+  <script src="../assets/i18n.js"></script>
+  <script src="../assets/admin-common.js"></script>
+  <script src="../assets/admin-settings.js"></script>
+</body>
+</html>

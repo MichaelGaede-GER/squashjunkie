@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="nav.dashboard">Dashboard · Squash Junkies Admin</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+</head>
+<body>
+  <nav class="admin-nav">
+    <div class="wrap">
+      <span style="font-family:'Archivo Black',sans-serif">Squash Junkies · Admin</span>
+      <div class="links">
+        <a href="dashboard.html" data-i18n="nav.dashboard">Dashboard</a>
+        <a href="settings.html" data-i18n="nav.settings">Settings</a>
+        <a href="reports.html" data-i18n="nav.reports">Reports</a>
+        <a href="#" id="logoutBtn" class="back-link" data-i18n="nav.logout">Logout</a>
+        <div class="lang-switch">
+          <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn" data-lang="de">DE</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="wrap" style="max-width:1000px">
+    <div id="notConfigured" class="card" style="display:none;max-width:480px">
+      <p style="margin-bottom:16px" data-i18n="dashboard.notConfigured">No settings have been configured yet.</p>
+      <a href="settings.html" class="btn btn-primary" data-i18n="dashboard.setupNow">Set up now</a>
+    </div>
+
+    <div id="content" style="display:none">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
+        <h1 id="title" style="font-size:24px"></h1>
+        <a href="reports.html" class="btn btn-secondary" data-i18n="dashboard.toReports">Go to reports</a>
+      </div>
+
+      <div class="grid grid-3" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr));margin-bottom:16px">
+        <div class="card"><div class="stat-label" data-i18n="dashboard.metric.teams">Teams registered</div><div class="stat-value" id="mTeams"></div></div>
+        <div class="card"><div class="stat-label" data-i18n="dashboard.metric.complete">Complete teams</div><div class="stat-value" id="mComplete"></div></div>
+        <div class="card"><div class="stat-label" data-i18n="dashboard.metric.revenue">Expected revenue</div><div class="stat-value" id="mRevenue"></div></div>
+        <div class="card"><div class="stat-label" data-i18n="dashboard.metric.registration">Registration</div><div class="stat-value" id="mRegOpen"></div></div>
+      </div>
+
+      <div class="grid grid-3" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr));margin-bottom:16px">
+        <div class="card"><div class="stat-label" data-i18n="dashboard.metric.menTotal">Men total</div><div class="stat-value" id="mMen"></div></div>
+        <div class="card"><div class="stat-label" data-i18n="dashboard.metric.womenTotal">Women total</div><div class="stat-value" id="mWomen"></div></div>
+        <div class="card"><div class="stat-label" data-i18n="dashboard.metric.subs">of which substitutes</div><div class="stat-value" id="mSubs"></div></div>
+        <div class="card"><div class="stat-label" data-i18n="dashboard.metric.supporters">Supporters</div><div class="stat-value" id="mSupporters"></div></div>
+      </div>
+
+      <div class="card text-muted" style="margin-bottom:16px" id="editStatusLine"></div>
+
+      <div class="card" style="overflow-x:auto">
+        <h2 style="font-size:18px;margin-bottom:16px" data-i18n="dashboard.table.heading">Teams</h2>
+        <table>
+          <thead>
+            <tr>
+              <th data-i18n="dashboard.table.team">Team</th>
+              <th data-i18n="dashboard.table.captain">Captain</th>
+              <th data-i18n="dashboard.table.contact">Contact</th>
+              <th data-i18n="dashboard.table.men">Men</th>
+              <th data-i18n="dashboard.table.women">Women</th>
+              <th data-i18n="dashboard.table.subs">Subs</th>
+              <th data-i18n="dashboard.table.supp">Supp.</th>
+              <th data-i18n="dashboard.table.amount">Amount</th>
+              <th data-i18n="dashboard.table.code">Code</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="teamsBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+  <script src="../assets/supabase-client.js"></script>
+  <script src="../assets/i18n.js"></script>
+  <script src="../assets/admin-common.js"></script>
+  <script src="../assets/admin-dashboard.js"></script>
+</body>
+</html>
